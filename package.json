@@ -1,0 +1,44 @@
+{
+  "name": "pi-reddit-research",
+  "version": "0.1.0",
+  "description": "Reddit JSON research tools and skill for pi coding agent.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-extension",
+    "reddit",
+    "research",
+    "llm-tools"
+  ],
+  "homepage": "https://github.com/SaintNerona/pi-reddit-research#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaintNerona/pi-reddit-research.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SaintNerona/pi-reddit-research/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "extensions",
+    "skills",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}
