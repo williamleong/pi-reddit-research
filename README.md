@@ -64,6 +64,7 @@ Environment variables:
 | `PI_REDDIT_SUBREDDIT_TTL_MS` | `604800000` | Subreddit cache TTL. |
 | `PI_REDDIT_TOPIC_TTL_MS` | `2592000000` | Topic-to-subreddit cache TTL. |
 | `PI_REDDIT_MAX_OUTPUT_CHARS` | `14000` | Max compact output size. |
+| `PI_REDDIT_STATUS_FOOTER` | `true` | Show "Reddit: sqlite" in the TUI footer. Set to `0` or `false` to hide. |
 
 ## Notes
 

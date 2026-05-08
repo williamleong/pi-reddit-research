@@ -18,6 +18,7 @@ const threadTtlMs = Math.max(30_000, Number(process.env.PI_REDDIT_THREAD_TTL_MS 
 const subredditTtlMs = Math.max(30_000, Number(process.env.PI_REDDIT_SUBREDDIT_TTL_MS ?? 7 * 24 * 60 * 60_000));
 const topicTtlMs = Math.max(30_000, Number(process.env.PI_REDDIT_TOPIC_TTL_MS ?? 30 * 24 * 60 * 60_000));
 const maxOutputChars = Math.max(2000, Number(process.env.PI_REDDIT_MAX_OUTPUT_CHARS ?? 14_000));
+const showStatusFooter = process.env.PI_REDDIT_STATUS_FOOTER !== "0" && process.env.PI_REDDIT_STATUS_FOOTER !== "false";
 
 type JsonObject = Record<string, unknown>;
 type RedditSort = "relevance" | "hot" | "top" | "new" | "comments";
@@ -1181,13 +1182,15 @@ function formatSubredditCandidates(topic: string, candidates: SubredditCandidate
 
 export default function redditResearch(pi: ExtensionAPI) {
 
-	pi.on("session_start", (_event, ctx) => {
-		ctx.ui.setStatus("reddit", "Reddit: sqlite");
-	});
+	if (showStatusFooter) {
+		pi.on("session_start", (_event, ctx) => {
+			ctx.ui.setStatus("reddit", "Reddit: sqlite");
+		});
 
-	pi.on("session_shutdown", (_event, ctx) => {
-		ctx.ui.setStatus("reddit", undefined);
-	});
+		pi.on("session_shutdown", (_event, ctx) => {
+			ctx.ui.setStatus("reddit", undefined);
+		});
+	}
 
 	pi.registerCommand("reddit", {
 		description: "Search Reddit JSON quickly",
